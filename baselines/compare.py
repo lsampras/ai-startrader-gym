@@ -6,12 +6,12 @@ from datetime import datetime
 import data_preprocessing as dp
 from sklearn.preprocessing import MinMaxScaler
 
-import keras
-from keras.models import Sequential
-from keras.layers.recurrent import LSTM
-from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras.models import load_model
-from keras.layers import Dense, Dropout
+from tensorflow import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
+from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import Dense, Dropout
 
 # ------------------------- GLOBAL PARAMETERS -------------------------
 # Start and end period of historical data in question
