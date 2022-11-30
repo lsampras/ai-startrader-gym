@@ -695,7 +695,7 @@ class UserDisplay:
         Function to plot all portfolio cumulative returns.
         """
         # Set a palette so that all 14 lines can be better differentiated
-        color_palette = ['#36C4FE', '#FF66F9', '#FF7E66', '#DE0049', '0038E7',
+        color_palette = ['#36C4FE', '#FF66F9', '#FF7E66', '#DE0049', '#0038E7',
                          '#758CFF', '#4400E7', '#A2ED00', '#00EDC3', '#EECF00', '#EE5C00']
         fig, ax = plt.subplots(figsize=(14, 6))
 
