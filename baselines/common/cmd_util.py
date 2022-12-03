@@ -51,11 +51,14 @@ def make_vec_env(env_id, env_type, num_env, seed,
             logger_dir=logger_dir,
             initializer=initializer
         )
+    print("1 make vec env", num_env)
 
     set_global_seeds(seed)
     if not force_dummy and num_env > 1:
+        print("2 make vec env")
         return SubprocVecEnv([make_thunk(i + start_index, initializer=initializer) for i in range(num_env)])
     else:
+        print("3 make vec env")
         return DummyVecEnv([make_thunk(i + start_index, initializer=None) for i in range(num_env)])
 
 
@@ -65,6 +68,7 @@ def make_env(env_id, env_type, mpi_rank=0, subrank=0, seed=None, reward_scale=1.
 
     wrapper_kwargs = wrapper_kwargs or {}
     env_kwargs = env_kwargs or {}
+    print("1 make env", env_id, env_type)
     if ':' in env_id:
         import re
         import importlib
