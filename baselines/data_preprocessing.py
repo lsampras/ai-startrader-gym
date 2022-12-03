@@ -223,7 +223,7 @@ class DataRetrieval:
                 df = self.preprocessing(s)
                 df.columns = [str(s) + '_' + str(col) for col in df.columns]
                 self.feature_df = pd.concat([self.feature_df, df], axis=1)
-        print(feature_df.head())
+        print(self.feature_df.head())
         return self.feature_df
 
     def get_adj_close(self, selected):
