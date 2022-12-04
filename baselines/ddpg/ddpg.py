@@ -147,6 +147,7 @@ def learn(network, env,
             for t_rollout in range(nb_rollout_steps):
                 # Predict next action.
                 action, q, _, _ = agent.step(obs, apply_noise=True, compute_Q=True)
+                print(f"AGENT ACTIONS for {obs} {actions}")
 
                 # Execute next action.
                 if rank == 0 and render:

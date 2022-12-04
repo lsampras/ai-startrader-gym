@@ -294,7 +294,7 @@ class StarTradingEnv(gym.Env):
             portfolio_value = sum(np.array(stock_price.loc[self.day]) * np.array(self.state[self.full_feature_length:]))
             # Total asset = account balance + portfolio value
             total_asset_ending = self.state[0] + portfolio_value
-            print("TRADER BALANCE", total_asset_ending)
+            # print("TRADER BALANCE", total_asset_ending)
 
             # Update account balance statement
             self.acc_balance = np.append(self.acc_balance, self.state[0])
@@ -320,7 +320,7 @@ class StarTradingEnv(gym.Env):
             # If agent has not traded long enough, it only has to bear total asset difference  at the end of the day
             else:
                 self.reward = total_asset_ending - total_asset_starting
-            print("TRADER REWARD", self.reward)
+            # print("TRADER REWARD", self.reward)
 
         return self.state, self.reward, self.done, {}
 
