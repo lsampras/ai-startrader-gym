@@ -200,7 +200,6 @@ class StarTradingEnv(gym.Env):
         self.done = self.day >= END_TRAIN
         # Uncomment below to run a quick test
         #self.done = self.day >= START_TRAIN + timedelta(days=10)
-        print("TRADER BALANCE", self.state[0])
 
         # If it is the last step, plot trading performance
         if self.done:
@@ -295,6 +294,7 @@ class StarTradingEnv(gym.Env):
             portfolio_value = sum(np.array(stock_price.loc[self.day]) * np.array(self.state[self.full_feature_length:]))
             # Total asset = account balance + portfolio value
             total_asset_ending = self.state[0] + portfolio_value
+            print("TRADER BALANCE", total_asset_ending)
 
             # Update account balance statement
             self.acc_balance = np.append(self.acc_balance, self.state[0])
