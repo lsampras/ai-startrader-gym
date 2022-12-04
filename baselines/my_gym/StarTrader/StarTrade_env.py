@@ -320,6 +320,7 @@ class StarTradingEnv(gym.Env):
             # If agent has not traded long enough, it only has to bear total asset difference  at the end of the day
             else:
                 self.reward = total_asset_ending - total_asset_starting
+            print("TRADER REWARD", self.reward)
 
         return self.state, self.reward, self.done, {}
 
