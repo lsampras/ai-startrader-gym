@@ -199,6 +199,7 @@ class StarTradingEnv(gym.Env):
         self.done = self.day >= END_TRAIN
         # Uncomment below to run a quick test
         #self.done = self.day >= START_TRAIN + timedelta(days=10)
+        print("TRADER BALANCE", self.acc_balance)
 
         # If it is the last step, plot trading performance
         if self.done:
