@@ -268,7 +268,7 @@ class DDPG(object):
         feed_dict = {self.obs0: U.adjust_shape(self.obs0, [obs])}
         if compute_Q:
             action, q = self.sess.run([actor_tf, self.critic_with_actor_tf], feed_dict=feed_dict)
-            print("AGENT ACTION {action} {q}")
+            print(f"AGENT ACTION {action} {q}")
         else:
             action = self.sess.run(actor_tf, feed_dict=feed_dict)
             q = None
