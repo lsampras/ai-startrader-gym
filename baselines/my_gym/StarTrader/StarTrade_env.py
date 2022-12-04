@@ -134,7 +134,7 @@ class StarTradingEnv(gym.Env):
         """
         Perform and record sell transactions. Commissions and slippage are taken into account.
         """
-
+        print(f"SELLING {idx} with {action}")
         # Only need to sell the unit recommended by the trading agent, not necessarily all stock unit.
         num_share = min(abs(int(action)) , self.state[idx + self.full_feature_length])
         commission = dp.Trading.commission(num_share, stock_price.loc[self.day][idx])
@@ -158,6 +158,7 @@ class StarTradingEnv(gym.Env):
         """
         Perform and record buy transactions. Commissions and slippage are taken into account.
         """
+        print(f"BUYING {idx} with {action}")
 
         # Calculate the maximum possible number of stock unit the current cash can buy
         available_unit = self.state[0] // stock_price.loc[self.day][idx]
@@ -199,7 +200,7 @@ class StarTradingEnv(gym.Env):
         self.done = self.day >= END_TRAIN
         # Uncomment below to run a quick test
         #self.done = self.day >= START_TRAIN + timedelta(days=10)
-        print("TRADER BALANCE", self.acc_balance)
+        print("TRADER BALANCE", self.state[0])
 
         # If it is the last step, plot trading performance
         if self.done:
