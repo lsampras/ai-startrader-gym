@@ -26,10 +26,12 @@ class Actor(Model):
         self.nb_actions = nb_actions
 
     def __call__(self, obs, reuse=False):
+        print(f"ACTOR INPUT {obs}")
         with tf.variable_scope(self.name, reuse=tf.AUTO_REUSE):
             x = self.network_builder(obs)
             x = tf.layers.dense(x, self.nb_actions, kernel_initializer=tf.random_uniform_initializer(minval=-3e-3, maxval=3e-3))
             x = tf.nn.tanh(x)
+        print(f"ACTOR OUTPUT {x}")
         return x
 
 
