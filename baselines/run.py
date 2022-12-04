@@ -157,7 +157,9 @@ def get_alg_module(alg, submodule=None):
     submodule = submodule or alg
     try:
         # first try to import the alg module from baselines
-        alg_module = import_module('.'.join(['baselines', alg, submodule]))
+        path = '.'.join(['baselines', alg, submodule])
+        print("import path", path)
+        alg_module = import_module(path)
     except ImportError:
         # then from rl_algs
         print("Importing ENV", alg, submodule)
