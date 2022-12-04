@@ -268,7 +268,7 @@ class DDPG(object):
         feed_dict = {self.obs0: U.adjust_shape(self.obs0, [obs])}
         if compute_Q:
             action, q = self.sess.run([actor_tf, self.critic_with_actor_tf], feed_dict=feed_dict)
-            print(f"AGENT ACTION {action} {q}")
+            print(f"AGENT ACTION {action} {q} {actor_tf} {self.critic_with_actor_tf} {feed_dict}")
         else:
             action = self.sess.run(actor_tf, feed_dict=feed_dict)
             q = None
@@ -333,6 +333,7 @@ class DDPG(object):
         self.actor_optimizer.update(actor_grads, stepsize=self.actor_lr)
         self.critic_optimizer.update(critic_grads, stepsize=self.critic_lr)
 
+        print(f"TRAINING RESULTS {critic_loss} {actor_loss}")
         return critic_loss, actor_loss
 
     def initialize(self, sess):
